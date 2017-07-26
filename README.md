@@ -1,31 +1,72 @@
-# Watch a file for changes
+# System monitoring software
 
-Installation via
+Installation local
+```sh
+$ npm install comlog-system-monitor
+```
+
+Installation global
+```sh
+$ npm install -g comlog-system-monitor
+$ comlog-system-monitor /path/to/config.json/if/not/in/working/directory
+```
+
+Installation of needed modules
 ```sh
 $ npm install -s comlog-system-monitor-filetime
 ```
 
 # Usage
+ - Rename config.example.js and configure them. 
+ - Remove all the blocks you do not need.
+ - Start node bin/run.js (or run comlog-system-monitor if global installed)
+
+# Integration
+
 ```javascript
-var Service = require('comlog-system-monitor-filetime');
+// Disable ssl check if you need it
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
-var csmf = new Service({
-	path: "/var/log/messages", // Or function
-	interval: 60000, // 1 Minute
-	timeout: 30000 // 0.5 Minute
+var CSM = new (require('./comlog-system-monitor.js'))();
+
+// Add a watcher service
+CSM.addWatcher({
+	"name": "Processlog",
+	"interval": 10000,
+	"type": "filetime",
+	"timeout": 60000,
+	"debug": true,
+	"path": "function() {\n\tvar path = process.env.TEMP;\n\n\tpath += '\\\\process.log'\nreturn path;}",
+	"on": {
+		"down": [
+			{
+				"type": "email",
+				"to": "my.email@mydomain.com"
+			}
+		],
+		"up": [
+			{
+				"type": "email",
+				"to": "my.email@mydomain.com"
+			}
+		]
+	}
 });
 
-csmf.on('error', function(err) {
-    console.error(err);
+// Global action configuration (./actions folder)
+CSM.addActionSettings('email', {
+	"host": "smtp.speedorder.de",
+	"user": "noreply",
+	"password": "DevSO11",
+	"ssl": false,
+	"tls": true
 });
 
-// bind event
-csmf.on('down', function() {
-    console.info('Log timestamp overflow');
+// Define on error event
+CSM.on('error', function (err) {
+	console.error(err.stack || err+'');
 });
 
-// bind event
-csmf.on('up', function() {
-    console.info('Log timestamp is ok');
-});
+// Start monitoring
+CSM.start();
 ```
