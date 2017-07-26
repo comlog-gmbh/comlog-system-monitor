@@ -1,0 +1,59 @@
+{
+	"watcher": [
+		{
+			"name": "Processlog",
+			"interval": 10000,
+			"type": "filetime",
+			"timeout": 60000,
+			"debug": true,
+			"path": "function() {\n\tvar path = process.env.TEMP;\n\n\tpath += '\\\\process.log'\nreturn path;}",
+			"on": {
+				"down": [
+					{
+						"type": "email",
+						"to": "my.email@mydomain.com"
+					}
+				],
+				"up": [
+					{
+						"type": "email",
+						"to": "my.email@mydomain.com"
+					}
+				]
+			}
+		},
+		{
+			"name": "Datenordner (c:\\daten)",
+			"interval": 10000,
+			"max" : 3,
+			"folder": false,
+			"type": "filecount",
+			"debug": true,
+			"path": "C:\\daten",
+			"on": {
+				"down": [
+					{
+						"type": "email",
+						"to": "my.email@mydomain.com"
+					}
+				],
+				"up": [
+					{
+						"type": "email",
+						"to": "my.email@mydomain.com"
+					}
+				]
+			}
+		}
+	],
+	"action": {
+		"email": {
+			"host": "smtp.mydomain.de",
+			"user": "my.user",
+			"password": "mypass",
+			"ssl": false,
+			"tls": true
+		}
+	}
+}
+

@@ -1,0 +1,38 @@
+{
+  "name": "comlog-system-monitor",
+  "version": "0.5.0",
+  "description": "Service monitoring",
+  "main": "comlog-system-monitor.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "COMLOG GmbH <bernhard.duenow@comlog.org> (http://www.comlog.org/)",
+  "license": "MIT",
+  "dependencies": {
+    "comlog-event-handler": "^1.0.0",
+    "emailjs": "^1.0.11",
+    "uniqid": "^4.1.1"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {
+    "comlog-system-monitor-filecount": ">=1.0.0",
+    "comlog-system-monitor-filetime": ">=1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/comlog-gmbh/comlog-system-monitor.git"
+  },
+  "keywords": [
+    "System",
+    "monitoring",
+    "watcher",
+    "service"
+  ],
+  "bugs": {
+    "url": "https://github.com/comlog-gmbh/comlog-system-monitor/issues"
+  },
+  "homepage": "https://github.com/comlog-gmbh/comlog-system-monitor#readme"
+}
