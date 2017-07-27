@@ -43,7 +43,7 @@ function ComlogSystemMonitor() {
 		if (opt instanceof Function) return opt;
 		try {
 			var fullOpt = _preset[opt.type] ?  extend(_preset[opt.type], opt) : opt;
-			var Action = new (require('./actions/'+opt.type+'.js'))(fullOpt);
+			var Action = new (require('comlog-system-monitor-event-'+opt.type))(fullOpt);
 			return function(arg1) {
 				Action.start(arg1, function (err) {
 					if (err) _this.trigger('error', [err]);

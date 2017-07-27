@@ -12,12 +12,22 @@
 					{
 						"type": "email",
 						"to": "my.email@mydomain.com"
+					},
+					{
+						"type": "sipgate-sms",
+						"to": "0133456789",
+						"from": "987654321"
 					}
 				],
 				"up": [
 					{
 						"type": "email",
 						"to": "my.email@mydomain.com"
+					},
+					{
+						"type": "sipgate-sms",
+						"to": "0133456789",
+						"from": "987654321"
 					}
 				]
 			}
@@ -53,6 +63,10 @@
 			"password": "mypass",
 			"ssl": false,
 			"tls": true
+		},
+		"sipgate-sms": {
+			"user": "my.sipgate.account",
+			"password": "mypass"
 		}
 	}
 }
