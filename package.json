@@ -1,6 +1,6 @@
 {
 	"name": "comlog-system-monitor",
-	"version": "0.7.0",
+	"version": "0.7.1",
 	"description": "Service monitoring",
 	"main": "comlog-system-monitor.js",
 	"scripts": {
@@ -9,14 +9,10 @@
 	"author": "COMLOG GmbH <bernhard.duenow@comlog.org> (http://www.comlog.org/)",
 	"license": "MIT",
 	"dependencies": {
-		"better-require": "0.0.3",
 		"comlog-event-handler": "^1.0.0",
 		"comlog-system-monitor-event-email": "^1.0.0",
 		"comlog-system-monitor-event-sipgate-sms": "^1.0.1",
-		"googleapis": "git+https://github.com/google/google-api-nodejs-client.git",
-		"hangupsjs": "^1.3.4",
-		"uniqid": "^4.1.1",
-		"xmlrpc": "^1.3.2"
+		"uniqid": "^4.1.1"
 	},
 	"directories": {
 		"lib": "lib"
