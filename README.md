@@ -55,9 +55,9 @@ CSM.addWatcher({
 
 // Global action configuration (./actions folder)
 CSM.addActionSettings('email', {
-	"host": "smtp.speedorder.de",
+	"host": "smtp.mydomain.de",
 	"user": "noreply",
-	"password": "DevSO11",
+	"password": "Password",
 	"ssl": false,
 	"tls": true
 });
