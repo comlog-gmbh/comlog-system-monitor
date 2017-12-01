@@ -1,6 +1,6 @@
 {
 	"name": "comlog-system-monitor",
-	"version": "0.7.2",
+	"version": "0.7.3",
 	"description": "Service monitoring",
 	"main": "comlog-system-monitor.js",
 	"scripts": {
@@ -9,9 +9,9 @@
 	"author": "COMLOG GmbH <bernhard.duenow@comlog.org> (http://www.comlog.org/)",
 	"license": "MIT",
 	"dependencies": {
-		"comlog-event-handler": "^1.0.0",
-		"comlog-system-monitor-event-email": "^1.0.0",
-		"comlog-system-monitor-event-sipgate-sms": "^1.0.1",
+		"comlog-event-handler": ">=1.0.0",
+		"comlog-system-monitor-event-email": ">=1.0.0",
+		"comlog-system-monitor-event-sipgate-sms": ">=1.0.1",
 		"uniqid": "^4.1.1"
 	},
 	"directories": {
@@ -21,7 +21,7 @@
 	"optionalDependencies": {
 		"comlog-system-monitor-filecount": ">=1.0.0",
 		"comlog-system-monitor-filetime": ">=1.0.0",
-		"comlog-system-monitor-process": ">=1.0.0"
+		"comlog-system-monitor-process": ">=1.0.2"
 	},
 	"repository": {
 		"type": "git",
