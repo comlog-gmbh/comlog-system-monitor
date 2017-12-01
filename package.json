@@ -1,6 +1,6 @@
 {
 	"name": "comlog-system-monitor",
-	"version": "0.7.1",
+	"version": "0.7.2",
 	"description": "Service monitoring",
 	"main": "comlog-system-monitor.js",
 	"scripts": {
@@ -20,7 +20,8 @@
 	"devDependencies": {},
 	"optionalDependencies": {
 		"comlog-system-monitor-filecount": ">=1.0.0",
-		"comlog-system-monitor-filetime": ">=1.0.0"
+		"comlog-system-monitor-filetime": ">=1.0.0",
+		"comlog-system-monitor-process": ">=1.0.0"
 	},
 	"repository": {
 		"type": "git",
