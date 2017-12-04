@@ -92,6 +92,10 @@ function ComlogSystemMonitor() {
 
 						delete config.on;
 					}
+					if (!config.type) {
+						console.error("Please set monitor type (filetime, process etc...)");
+						return;
+					}
 					var WatcherConst = require('comlog-system-monitor-'+config.type.toLowerCase());
 					var Watcher = new WatcherConst(config);
 					var extra = {};
