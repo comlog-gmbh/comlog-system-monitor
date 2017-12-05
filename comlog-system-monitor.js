@@ -46,7 +46,7 @@ function ComlogSystemMonitor() {
 			var Action = new (require('comlog-system-monitor-event-'+opt.type))(fullOpt);
 			return function(arg1) {
 				Action.start(arg1, function (err) {
-					if (err) _this.trigger('error', [err]);
+					if (err) _this.emit('error', [err]);
 				});
 			};
 		} catch (e) {
@@ -102,11 +102,11 @@ function ComlogSystemMonitor() {
 
 					Watcher.on('up', function () {
 						extra.status = 'up';
-						_this.trigger('up_'+Watcher.id, [extend(config, extra)]);
+						_this.emit('up_'+Watcher.id, [extend(config, extra)]);
 					});
 					Watcher.on('down', function () {
 						extra.status = 'down';
-						_this.trigger('down_'+Watcher.id, [extend(config, extra)]);
+						_this.emit('down_'+Watcher.id, [extend(config, extra)]);
 					});
 					Watcher.start();
 				} catch (e) { console.error(e); }
