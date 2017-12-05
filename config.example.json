@@ -1,7 +1,7 @@
 {
 	"watcher": [
 		{
-			"name": "Processlog",
+			"label": "Processlog",
 			"interval": 10000,
 			"type": "filetime",
 			"timeout": 60000,
@@ -33,7 +33,7 @@
 			}
 		},
 		{
-			"name": "Datenordner (c:\\daten)",
+			"label": "Datenordner (c:\\daten)",
 			"interval": 10000,
 			"max" : 3,
 			"folder": false,

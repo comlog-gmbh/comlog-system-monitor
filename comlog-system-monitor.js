@@ -17,8 +17,9 @@ var fs = require("fs"),
 function ExtendService(Service) {
 	Service.statusMail = function(Action, Status) {
 		var ComlogMail = require("comlog-sendmail");
-		ComlogMail.subject = ""+this.name+" is "+(Status ? 'up' : 'down');
-		ComlogMail.text = "Status von "+this.name+" hat sich geändert\n";
+		var label = this.label || this.name;
+		ComlogMail.subject = ""+label+" is "+(Status ? 'up' : 'down');
+		ComlogMail.text = "Status von "+label+" hat sich geändert\n";
 		ComlogMail.text += new Date()+"";
 		ComlogMail.to = Action.to;
 		console.log(ComlogMail.subject);
