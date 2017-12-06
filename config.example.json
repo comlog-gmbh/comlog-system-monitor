@@ -54,6 +54,48 @@
 					}
 				]
 			}
+		},
+		{
+			"label": "logfile",
+			"type": "log",
+			"match": "/error|warn/gi",
+			"debug": true,
+			"path": "c:\\test.txt",
+			"on": {
+				"down": [
+					{
+						"type": "email",
+						"to": "myemail@mydomain.com"
+					}
+				],
+				"up": [
+					{
+						"type": "email",
+						"to": "myemail@mydomain.com"
+					}
+				]
+			}
+		},
+		{
+			"interval": 10000,
+			"type": "process",
+			"debug": true,
+			"name": "Notepad++.exe",
+			"maxMemory": "30M",
+			"on": {
+				"down": [
+					{
+						"type": "email",
+						"to": "myemail@mydomain.com"
+					}
+				],
+				"up": [
+					{
+						"type": "email",
+						"to": "myemail@mydomain.com"
+					}
+				]
+			}
 		}
 	],
 	"action": {
