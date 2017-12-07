@@ -1,6 +1,6 @@
 {
 	"name": "comlog-system-monitor",
-	"version": "0.7.9",
+	"version": "0.8.0",
 	"description": "Service monitoring",
 	"main": "comlog-system-monitor.js",
 	"scripts": {

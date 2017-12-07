@@ -1,0 +1,115 @@
+module.exports = {
+	"watcher": [
+		{
+			"label": "Processlog",
+			"interval": 10000,
+			"type": "filetime",
+			"timeout": 60000,
+			"debug": true,
+			"path": "function() {\n\tvar path = process.env.TEMP;\n\n\tpath += '\\\\process.log'\nreturn path;}",
+			"on": {
+				"down": [
+					{
+						"type": "email",
+						"to": "my.email@mydomain.com"
+					},
+					{
+						"type": "sipgate-sms",
+						"to": "0133456789",
+						"from": "987654321"
+					}
+				],
+				"up": [
+					{
+						"type": "email",
+						"to": "my.email@mydomain.com"
+					},
+					{
+						"type": "sipgate-sms",
+						"to": "0133456789",
+						"from": "987654321"
+					}
+				]
+			}
+		},
+		{
+			"label": "Datenordner (c:\\daten)",
+			"interval": 10000,
+			"max" : 3,
+			"folder": false,
+			"type": "filecount",
+			"debug": true,
+			"path": "C:\\daten",
+			"on": {
+				"down": [
+					{
+						"type": "email",
+						"to": "my.email@mydomain.com"
+					}
+				],
+				"up": [
+					{
+						"type": "email",
+						"to": "my.email@mydomain.com"
+					}
+				]
+			}
+		},
+		{
+			"label": "logfile",
+			"type": "log",
+			"match": "/error|warn/gi",
+			"debug": true,
+			"path": "c:\\test.txt",
+			"on": {
+				"down": [
+					{
+						"type": "email",
+						"to": "myemail@mydomain.com"
+					}
+				],
+				"up": [
+					{
+						"type": "email",
+						"to": "myemail@mydomain.com"
+					}
+				]
+			}
+		},
+		{
+			"interval": 10000,
+			"type": "process",
+			"debug": true,
+			"name": "Notepad++.exe",
+			"maxMemory": "30M",
+			"on": {
+				"down": [
+					{
+						"type": "email",
+						"to": "myemail@mydomain.com"
+					}
+				],
+				"up": [
+					{
+						"type": "email",
+						"to": "myemail@mydomain.com"
+					}
+				]
+			}
+		}
+	],
+	"action": {
+		"email": {
+			"host": "smtp.mydomain.de",
+			"user": "my.user",
+			"password": "mypass",
+			"ssl": false,
+			"tls": true
+		},
+		"sipgate-sms": {
+			"user": "my.sipgate.account",
+			"password": "mypass"
+		}
+	}
+};
+

@@ -4,7 +4,7 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 var path = require('path'),
 	fs = require('fs'),
-	configPaths = [process.argv[2], process.cwd() + path.sep + 'config.json', path.dirname(process.cwd()) + path.sep + 'config.json'],
+	configPaths = [process.argv[2], process.cwd() + path.sep + 'config.json', path.dirname(process.cwd()) + path.sep + 'config.json', process.cwd() + path.sep + 'config.js', path.dirname(process.cwd()) + path.sep + 'config.js'],
 	configFile = null;
 
 while(configPaths.length > 0) {

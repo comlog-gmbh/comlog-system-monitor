@@ -17,7 +17,7 @@ $ npm install -s comlog-system-monitor-filetime
 ```
 
 # Usage
- - Rename config.example.js and configure them. 
+ - Rename config.example.json or config.example.js and configure them. 
  - Remove all the blocks you do not need.
  - Start node bin/run.js (or run comlog-system-monitor if global installed)
 
