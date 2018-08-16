@@ -23,6 +23,7 @@
 		"comlog-system-monitor-filetime": ">=1.0.0",
 		"comlog-system-monitor-process": ">=1.0.2",
 		"comlog-system-monitor-ftp": ">=1.0.0",
+		"comlog-system-monitor-sftp": "^1.0.1",
 		"comlog-system-monitor-log": ">=1.1.4"
 	},
 	"repository": {
