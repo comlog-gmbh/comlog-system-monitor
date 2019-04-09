@@ -6,7 +6,8 @@
  */
 var fs = require("fs"),
 	uniqid = require('uniqid'),
-	extend = require('util')._extend;
+	extend = require('util')._extend
+;
 
 /**
  * Configuration mit Funktionen erweitern
@@ -15,6 +16,8 @@ var fs = require("fs"),
  * @constructor
  */
 function ExtendService(Service) {
+	var logger = this.logger || console;
+
 	Service.statusMail = function(Action, Status) {
 		var ComlogMail = require("comlog-sendmail");
 		var label = this.label || this.name;
@@ -22,9 +25,9 @@ function ExtendService(Service) {
 		ComlogMail.text = "Status von "+label+" hat sich geändert\n";
 		ComlogMail.text += new Date()+"";
 		ComlogMail.to = Action.to;
-		console.log(ComlogMail.subject);
+		logger.debug(ComlogMail.subject);
 		ComlogMail.send(function(err, msg) {
-			if (err) console.error(err);
+			if (err) logger.error(err);
 		});
 	};
 
@@ -32,15 +35,19 @@ function ExtendService(Service) {
 	return Service;
 }
 
-function ComlogSystemMonitor() {
+function ComlogSystemMonitor(options) {
 	require('comlog-event-handler')(this);
+
+	this.logger = console;
 
 	var _this = this,
 		_watchers = [],
 		_preset = {};
 
+	if (options) for(var i in options) this[i] = options[i];
+
 	var toAction = function(opt) {
-		if (!opt) return console.info;
+		if (!opt) return _this.logger.info;
 		if (opt instanceof Function) return opt;
 		try {
 			var fullOpt = _preset[opt.type] ?  extend(_preset[opt.type], opt) : opt;
@@ -51,15 +58,15 @@ function ComlogSystemMonitor() {
 				});
 			};
 		} catch (e) {
-			console.error(e);
-			return console.info;
+			_this.logger.error(e);
+			return _this.logger.info;
 		}
 	};
 
 	this.addWatcher = function(options) {
 		if (!options) throw new Error("No watcher settings");
 
-		options = ExtendService(options);
+		options = ExtendService.call(this, options);
 		_watchers.push(options);
 		return options;
 	};
@@ -94,9 +101,14 @@ function ComlogSystemMonitor() {
 						delete config.on;
 					}
 					if (!config.type) {
-						console.error("Please set monitor type (filetime, process etc...)");
+						_this.logger.error("Please set monitor type (filetime, process etc...)");
 						return;
 					}
+
+					if (_this.logger != console) {
+						config.logger = _this.logger;
+					}
+
 					var WatcherConst = require('comlog-system-monitor-'+config.type.toLowerCase());
 					var Watcher = new WatcherConst(config);
 					var extra = {};
@@ -110,7 +122,7 @@ function ComlogSystemMonitor() {
 						_this.emit('down_'+Watcher.id, [extend(config, extra)]);
 					});
 					Watcher.start();
-				} catch (e) { console.error(e); }
+				} catch (e) { _this.logger.error(e); }
 			})(_watchers[i]);
 		}
 	}

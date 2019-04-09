@@ -10,8 +10,11 @@
 	"license": "MIT",
 	"dependencies": {
 		"comlog-event-handler": ">=1.0.2",
-		"comlog-system-monitor-event-email": ">=1.0.0",
+		"comlog-system-monitor-event-email": "^1.0.1",
 		"comlog-system-monitor-event-sipgate-sms": ">=1.0.1",
+		"log4js": "^4.1.0",
+		"open": "^6.1.0",
+		"systray": "^1.0.5",
 		"uniqid": "^4.1.1"
 	},
 	"directories": {
@@ -21,10 +24,10 @@
 	"optionalDependencies": {
 		"comlog-system-monitor-filecount": ">=1.0.0",
 		"comlog-system-monitor-filetime": ">=1.0.0",
-		"comlog-system-monitor-process": ">=1.0.2",
 		"comlog-system-monitor-ftp": ">=1.0.0",
-		"comlog-system-monitor-sftp": "^1.0.2",
-		"comlog-system-monitor-log": ">=1.1.4"
+		"comlog-system-monitor-log": ">=1.1.4",
+		"comlog-system-monitor-process": ">=1.0.2",
+		"comlog-system-monitor-sftp": "^1.0.2"
 	},
 	"repository": {
 		"type": "git",
@@ -37,7 +40,8 @@
 		"service"
 	],
 	"bin": {
-		"comlog-system-monitor": "bin/run.js"
+		"comlog-system-monitor": "bin/run.js",
+		"comlog-system-monitor-tray": "bin/run-tray.js"
 	},
 	"bugs": {
 		"url": "https://github.com/comlog-gmbh/comlog-system-monitor/issues"
