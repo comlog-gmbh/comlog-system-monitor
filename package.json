@@ -1,6 +1,6 @@
 {
 	"name": "comlog-system-monitor",
-	"version": "0.9.0",
+	"version": "0.9.1",
 	"description": "Service monitoring",
 	"main": "comlog-system-monitor.js",
 	"scripts": {
@@ -21,7 +21,7 @@
 	"devDependencies": {},
 	"optionalDependencies": {
 		"comlog-system-monitor-event-email": ">=1.0.1",
-		"comlog-system-monitor-event-sipgate-sms": ">=1.0.1",
+		"comlog-system-monitor-event-sipgate-sms": ">=1.2.1",
 		"comlog-system-monitor-filecount": ">=1.0.0",
 		"comlog-system-monitor-filetime": ">=1.0.0",
 		"comlog-system-monitor-ftp": ">=1.0.0",
